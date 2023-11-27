@@ -15,19 +15,12 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
       controller.tasks.add(event.task);
       emit(AddedTaskState(tasks: controller.tasks));
     });
-    // on<DoneTaskEvent>((event, emit) {
-    //   controller.tasks[event.taskIndex].toggleDone();
-    //   bool isDone = controller.tasks[event.taskIndex].isDone;
-    //   emit(MarkDoneTaskState(tasks: controller.tasks, isDone: true));
-    // });
-    on<CompleteTaskEvent>((event, emit) {
-      controller.tasks[event.taskIndex].markAsDone();
-      emit(MarkedAsDoneState(tasks: List.from(controller.tasks)));
-    });
 
-    on<UncompleteTaskEvent>((event, emit) {
-      controller.tasks[event.taskIndex].markAsUndone();
-      emit(MarkedAsUndoneState(tasks: List.from(controller.tasks)));
+    on<DoneTaskEvent>((event, emit) {
+      controller.tasks[event.taskIndex].toggleDone();
+      //print(controller.tasks);
+      bool isDone = controller.tasks[event.taskIndex].isDone;
+      emit(MarkDoneTaskState(tasks: controller.tasks, isDone: isDone));
     });
 
     on<DeleteTaskEvent>((event, emit) {

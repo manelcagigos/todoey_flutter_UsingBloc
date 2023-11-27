@@ -25,33 +25,14 @@ class AddedTaskState extends TaskState {
   List<Object> get props => [tasks];
 }
 
-// class MarkDoneTaskState extends TaskState {
-//   final List<Task> tasks;
-//   final bool isDone;
-
-//   const MarkDoneTaskState({required this.tasks, required this.isDone});
-
-//   @override
-//   List<Object> get props => [tasks, isDone];
-// }
-
-
-class MarkedAsDoneState extends TaskState {
+class MarkDoneTaskState extends TaskState {
   final List<Task> tasks;
+  final bool isDone;
 
-  const MarkedAsDoneState({required this.tasks});
+  const MarkDoneTaskState({required this.tasks, required this.isDone});
 
   @override
-  List<Object> get props => [tasks];
-}
-
-class MarkedAsUndoneState extends TaskState {
-  final List<Task> tasks;
-
-  const MarkedAsUndoneState({required this.tasks});
-
-  @override
-  List<Object> get props => [tasks];
+  List<Object> get props => [tasks, isDone];
 }
 
 class DeletedTaskState extends TaskState {

@@ -32,8 +32,6 @@ class _TaskScreenState extends State<TaskScreen> {
                 child: AddTaskScreen(addTaskCallback: (newTask) {
                   BlocProvider.of<TaskBloc>(context)
                       .add(AddTaskEvent(task: newTask));
-
-                  // Navigator.pop(context);
                 }),
               ),
             ),
@@ -46,19 +44,15 @@ class _TaskScreenState extends State<TaskScreen> {
           print(state);
           if (state is AddedTaskState) {
             tasks = List.from(state.tasks);
-            //final List<Task> tasks = (state as dynamic).tasks;
-            return _showUI(tasks);
-          } else if (state is MarkedAsDoneState) {
-            tasks = List.from(state.tasks);
-            //final List<Task> tasks = (state as dynamic).tasks;
-            return _showUI(tasks);
-          } else if (state is MarkedAsUndoneState) {
-            tasks = List.from(state.tasks);
-            //final List<Task> tasks = (state as dynamic).tasks;
             return _showUI(tasks);
           } else if (state is TaskInitialState) {
             tasks = List.from(state.tasks);
-            //final List<Task> tasks = (state as dynamic).tasks;
+            return _showUI(tasks);
+          } else if (state is MarkDoneTaskState) {
+            tasks = List.from(state.tasks);
+            return _showUI(tasks);
+          } else if (state is DeletedTaskState) {
+            tasks = List.from(state.tasks);
             return _showUI(tasks);
           } else {
             return const Center(child: CircularProgressIndicator());

@@ -25,32 +25,10 @@ class DeleteTaskEvent extends TaskEvent {
   List<Object> get props => [taskIndex];
 }
 
-class EditTaskEvent extends TaskEvent {}
-
-// class DoneTaskEvent extends TaskEvent {
-//   final int taskIndex;
-
-//   const DoneTaskEvent({required this.taskIndex});
-
-//   @override
-//   List<Object> get props => [taskIndex];
-// }
-
-// Evento para marcar una tarea como completada
-class CompleteTaskEvent extends TaskEvent {
+class DoneTaskEvent extends TaskEvent {
   final int taskIndex;
 
-  const CompleteTaskEvent({required this.taskIndex});
-
-  @override
-  List<Object> get props => [taskIndex];
-}
-
-// Evento para desmarcar una tarea
-class UncompleteTaskEvent extends TaskEvent {
-  final int taskIndex;
-
-  const UncompleteTaskEvent({required this.taskIndex});
+  const DoneTaskEvent({required this.taskIndex});
 
   @override
   List<Object> get props => [taskIndex];
